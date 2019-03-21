@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace E_commerce.Models
 {
-    public class Cart
+    public class Order_Customer
     {
         public int id { get; set; }
-        public int cart_id { get; set; }
-        public int product_id { get; set; }
-        public int product_quantity { get; set; }
+        public int name_customer { get; set; }
+        public string adress_customer { get; set; }
+        public int delivery_date { get; set; }
     }
 }

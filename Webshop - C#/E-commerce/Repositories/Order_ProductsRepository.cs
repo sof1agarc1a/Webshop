@@ -8,36 +8,36 @@ using Dapper;
 
 namespace E_commerce.Repositories
 {
-    public class CartRepository
+    public class Order_ProductsRepository
     {
         private readonly string connectionString;
 
-        public CartRepository(string connectionstring)
+        public Order_ProductsRepository(string connectionstring)
         {
             this.connectionString = connectionstring;
         }
 
-        public List<Cart> Get()
+        public List<Order_Products> Get()
         {
             using (var connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Cart>("SELECT * FROM Cart").ToList();
+                return connection.Query<Order_Products>("SELECT * FROM Order_Products").ToList();
             }
         }
 
-        public List<Cart> Get(string key)
+        public List<Order_Products> Get(string key)
         {
             using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Cart>("SELECT * FROM Cart WHERE id = @key", new { key }).ToList();
+                return connection.Query<Order_Products>("SELECT * FROM Order_Products WHERE id = @key", new { key }).ToList();
             }
         }
 
-        public Cart Get(int id)
+        public Order_Products Get(int id)
         {
             using (var connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.QuerySingleOrDefault<Cart>("SELECT * FROM Cart WHERE Id = @Id", new { id });
+                return connection.QuerySingleOrDefault<Order_Products>("SELECT * FROM Order_Products WHERE Id = @Id", new { id });
             }
         }
     }

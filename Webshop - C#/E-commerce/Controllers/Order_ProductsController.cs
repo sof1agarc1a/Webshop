@@ -12,32 +12,32 @@ using E_commerce.Services;
 namespace E_commerce.Controllers
 {
     [Route("api/[controller]")]
-    public class ProductsController : Controller
+    public class Order_ProductsController : Controller
     {
         private readonly string connectionString;
-        private readonly ProductsServices productsService;
+        private readonly Order_ProductsServices order_ProductsService;
 
 
-        public ProductsController(IConfiguration configuration)
+        public Order_ProductsController(IConfiguration configuration)
         {
             this.connectionString = configuration.GetConnectionString("ConnectionString");
-            this.productsService = new ProductsServices(new ProductsRepository(connectionString)); 
+            this.order_ProductsService = new Order_ProductsServices(new Order_ProductsRepository(connectionString));
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<Products>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<Order_Products>), StatusCodes.Status200OK)]
         public IActionResult Get()
 
         {
-            return Ok(this.productsService.Get());
+            return Ok(this.order_ProductsService.Get());
         }
 
         [HttpGet("{key}")]
-        [ProducesResponseType(typeof(Products), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
         [ProducesResponseTypeAttribute(StatusCodes.Status404NotFound)]
         public IActionResult Get(string key)
         {
-            var resault = this.productsService.Get(key);
+            var resault = this.order_ProductsService.Get(key);
             return Ok(resault);
         }
     }
