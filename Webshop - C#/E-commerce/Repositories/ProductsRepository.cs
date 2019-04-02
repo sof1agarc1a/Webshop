@@ -27,6 +27,7 @@ namespace E_commerce.Repositories
             }
         }
 
+
         public List<Products> Get(string key)
         {
             using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
@@ -35,13 +36,5 @@ namespace E_commerce.Repositories
             }
         }
 
-        public Products Get(int id)
-        {
-            using (var connection = new SQLiteConnection(this.connectionString))
-            {
-                return connection.QuerySingleOrDefault<Products>("SELECT * FROM Products WHERE Id = @Id", new { id });
-            }
-
-        }
     }
 }

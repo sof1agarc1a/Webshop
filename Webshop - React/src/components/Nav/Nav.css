@@ -29,7 +29,7 @@
   padding: 10px;
 }
 
-.nav a:hover {
+.nav li a:hover {
   color: white;
   background-color: #524E4E;
   border-radius: 2px;
@@ -43,4 +43,15 @@
 .cart-icon {
   width: 40px;
   margin-right: 30px;
+}
+
+.cart-wrapper {
+  display: flex;
+  align-items: center;
+  font-family: 'Josefin Sans';
+}
+
+.cart-wrapper a {
+  font-size: 18px;
+  padding: 4px;
 }

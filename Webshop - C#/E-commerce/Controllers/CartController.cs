@@ -24,21 +24,40 @@ namespace E_commerce.Controllers
             this.cartService = new CartServices(new CartRepository(connectionString));
         }
 
-        [HttpGet]
-        [ProducesResponseType(typeof(List<Cart>), StatusCodes.Status200OK)]
-        public IActionResult Get()
-
-        {
-            return Ok(this.cartService.Get());
-        }
 
         [HttpGet("{key}")]
         [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
         [ProducesResponseTypeAttribute(StatusCodes.Status404NotFound)]
-        public IActionResult Get(string key)
+        public IActionResult Get(int key)
         {
-            var resault = this.cartService.Get(key);
-            return Ok(resault);
+            var result = this.cartService.Get(key);
+            return Ok(result);
         }
+
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Post([FromBody]Cart cart)
+        {
+            var result = this.cartService.Add(cart);
+
+            if (!result)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+        }
+
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
+        [ProducesResponseTypeAttribute(StatusCodes.Status404NotFound)]
+        public void Delete(int id)
+        {
+            this.cartService.Delete(id);
+        }
+
     }
 }

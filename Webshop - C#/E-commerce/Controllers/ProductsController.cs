@@ -37,8 +37,8 @@ namespace E_commerce.Controllers
         [ProducesResponseTypeAttribute(StatusCodes.Status404NotFound)]
         public IActionResult Get(string key)
         {
-            var resault = this.productsService.Get(key);
-            return Ok(resault);
+            var result = this.productsService.Get(key);
+            return Ok(result);
         }
     }
 }

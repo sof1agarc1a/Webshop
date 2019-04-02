@@ -17,28 +17,34 @@ namespace E_commerce.Repositories
             this.connectionString = connectionstring;
         }
 
-        public List<Cart> Get()
+
+        public List<Cart> Get(int id)
         {
-            using (var connection = new SQLiteConnection(this.connectionString))
+
+            using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Cart>("SELECT * FROM Cart").ToList();
+                return connection.Query<Cart>("SELECT Cart.id, Cart.cart_id, product_id, product_quantity, product_title, img, price, SUM(price) AS total_price, description, product_artist, product_release, SUM(product_quantity) AS total_quantity FROM Cart LEFT JOIN Products ON product_id = Products.id WHERE cart_id = @id GROUP BY product_id", new { id }).ToList();
             }
         }
+          
 
-        public List<Cart> Get(string key)
+        public void Add(Cart cart)
         {
             using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Cart>("SELECT * FROM Cart WHERE id = @key", new { key }).ToList();
+                connection.Execute("INSERT INTO Cart (cart_id, product_id) VALUES(@cart_id, @product_id)", cart);
             }
         }
 
-        public Cart Get(int id)
+
+        public void Delete(int id)
         {
-            using (var connection = new SQLiteConnection(this.connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.QuerySingleOrDefault<Cart>("SELECT * FROM Cart WHERE Id = @Id", new { id });
+                connection.Execute("DELETE FROM Cart WHERE id = @id", new { id });
+
             }
         }
+
     }
 }

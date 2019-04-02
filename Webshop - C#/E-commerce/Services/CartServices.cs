@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using E_commerce.Models;
 using E_commerce.Repositories;
+using System.Transactions;
 
 namespace E_commerce.Services
 {
@@ -14,13 +15,38 @@ namespace E_commerce.Services
         {
             this.cartRepository = cartRepository;
         }
-        public List<Cart> Get()
+
+
+        public List<Cart> Get(int id)
         {
-            return this.cartRepository.Get();
+
+            var cart = this.cartRepository.Get(id);
+
+            if (cart == null)
+            {
+                return null;
+            }
+
+            return cart;
+
         }
-        public List<Cart> Get(string key)
+
+
+        public bool Add(Cart cart)
         {
-            return this.cartRepository.Get(key);
+            if (cart != null)
+            {
+                this.cartRepository.Add(cart);
+                return true;
+            }
+
+            return false;
+        }
+
+
+        public void Delete(int id)
+        {
+            this.cartRepository.Delete(id);
         }
     }
 }

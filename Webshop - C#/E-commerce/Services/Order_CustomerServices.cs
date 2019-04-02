@@ -18,9 +18,9 @@ namespace E_commerce.Services
         {
             return this.order_CustomerRepository.Get();
         }
-        public List<Order_Customer> Get(string key)
+        public List<Order_Customer> Get(int id)
         {
-            return this.order_CustomerRepository.Get(key);
+            return this.order_CustomerRepository.Get(id);
         }
     }
 }

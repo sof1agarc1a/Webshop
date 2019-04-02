@@ -25,20 +25,13 @@ namespace E_commerce.Repositories
             }
         }
 
-        public List<Order_Customer> Get(string key)
+        public List<Order_Customer> Get(int id)
         {
             using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Order_Customer>("SELECT * FROM Order_Customer WHERE id = @key", new { key }).ToList();
+                return connection.Query<Order_Customer>("SELECT * FROM Order_Customer WHERE ordered_cart = @id", new { id }).ToList();
             }
         }
 
-        public Order_Customer Get(int id)
-        {
-            using (var connection = new SQLiteConnection(this.connectionString))
-            {
-                return connection.QuerySingleOrDefault<Order_Customer>("SELECT * FROM Order_Customer WHERE Id = @Id", new { id });
-            }
-        }
     }
 }
