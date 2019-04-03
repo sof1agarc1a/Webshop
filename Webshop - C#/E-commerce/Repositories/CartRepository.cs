@@ -18,12 +18,12 @@ namespace E_commerce.Repositories
         }
 
 
-        public List<Cart> Get(int id)
+        public List<Cart> Get(string guid)
         {
 
             using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Cart>("SELECT Cart.id, Cart.cart_id, product_id, product_quantity, product_title, img, price, SUM(price) AS total_price, description, product_artist, product_release, SUM(product_quantity) AS total_quantity FROM Cart LEFT JOIN Products ON product_id = Products.id WHERE cart_id = @id GROUP BY product_id", new { id }).ToList();
+                return connection.Query<Cart>("SELECT Cart.id, Cart.cart_id, product_id, product_quantity, product_title, img, price, SUM(price) AS total_price, description, product_artist, product_release, SUM(product_quantity) AS total_quantity FROM Cart LEFT JOIN Products ON product_id = Products.id WHERE cart_id = @guid GROUP BY product_id", new { guid }).ToList();
             }
         }
           
@@ -45,6 +45,5 @@ namespace E_commerce.Repositories
 
             }
         }
-
     }
 }

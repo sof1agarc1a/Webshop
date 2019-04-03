@@ -17,10 +17,10 @@ namespace E_commerce.Services
         }
 
 
-        public List<Cart> Get(int id)
+        public List<Cart> Get(string guid)
         {
 
-            var cart = this.cartRepository.Get(id);
+            var cart = this.cartRepository.Get(guid);
 
             if (cart == null)
             {

@@ -10,15 +10,43 @@ class Home extends Component {
     super()
     this.state = {
       products: [],
-      cartId: 2,
-      cart_length: ""
+      cartId: "",
+      cart_length: "",
+      isLoading: true
     }
     this.addToCart = this.addToCart.bind(this)
   }
 
-  componentDidMount(){
+  componentWillMount() {
+    localStorage.getItem('cartId') && this.setState({
+      cartId: localStorage.getItem('cartId'),
+      isLoading: false
+    })
+  }
+
+  componentDidMount() {
     this.fetchProduct()
     this.updateCart()
+
+    //use guid as your unique id with localStorage
+    if(!localStorage.getItem('cartId')) {
+      this.fetchGuid()
+    }
+  }
+
+  //get guid
+  fetchGuid = () => {
+    fetch(`/api/Cart_Guid`)
+      .then(response => response.json())
+      .then(response => {
+      this.setState({
+        cartId: response
+      })
+    })
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    localStorage.setItem('cartId', nextState.cartId)
   }
 
   // fetch all products
@@ -32,7 +60,7 @@ class Home extends Component {
     })
   }
 
-  // update cart if product is added
+  //update cart if product is added
   updateCart() {
     fetch(`/api/cart/${this.state.cartId}`, {
       method: "GET",

@@ -25,12 +25,12 @@ namespace E_commerce.Controllers
         }
 
 
-        [HttpGet("{key}")]
+        [HttpGet("{guid}")]
         [ProducesResponseType(typeof(Cart), StatusCodes.Status200OK)]
         [ProducesResponseTypeAttribute(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int key)
+        public IActionResult Get(string guid)
         {
-            var result = this.cartService.Get(key);
+            var result = this.cartService.Get(guid);
             return Ok(result);
         }
 

@@ -23,12 +23,12 @@ namespace E_commerce.Controllers
             this.orderServices = new OrderServices(new Order_CustomerRepository(connectionString), new CartRepository(connectionString));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{guid}")]
         [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
         [ProducesResponseTypeAttribute(StatusCodes.Status404NotFound)]
-        public IActionResult Get(int id)
+        public IActionResult Get(string guid)
         {
-            return Ok(this.orderServices.Get(id));
+            return Ok(this.orderServices.Get(guid));
         }
         
     }

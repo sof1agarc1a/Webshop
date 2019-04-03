@@ -25,11 +25,11 @@ namespace E_commerce.Repositories
             }
         }
 
-        public List<Order_Customer> Get(int id)
+        public List<Order_Customer> Get(string guid)
         {
             using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
             {
-                return connection.Query<Order_Customer>("SELECT * FROM Order_Customer WHERE ordered_cart = @id", new { id }).ToList();
+                return connection.Query<Order_Customer>("SELECT * FROM Order_Customer WHERE ordered_cart = @guid", new { guid }).ToList();
             }
         }
 

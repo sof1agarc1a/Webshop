@@ -8,7 +8,7 @@ namespace E_commerce.Models
     public class Cart
     {
         public int id { get; set; }
-        public int cart_id { get; set; }
+        public string cart_id { get; set; }
         public int product_id { get; set; }
         public int product_quantity { get; set; }
         public int total_quantity { get; set; }

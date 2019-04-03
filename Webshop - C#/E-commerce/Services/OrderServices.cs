@@ -18,10 +18,10 @@ namespace E_commerce.Services
             this.cartRepository = cartRepository;
         }
 
-        public Order Get(int id)
+        public Order Get(string guid)
         {
-            var order_customer = this.order_customerRepository.Get(id);
-            var cart = this.cartRepository.Get(id);
+            var order_customer = this.order_customerRepository.Get(guid);
+            var cart = this.cartRepository.Get(guid);
 
             return new Order
             {

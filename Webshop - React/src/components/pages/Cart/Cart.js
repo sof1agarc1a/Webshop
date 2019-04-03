@@ -9,7 +9,7 @@ class Cart extends Component {
   constructor() {
     super()
     this.state = {
-      cartId: 2,
+      cartId: localStorage.getItem('cartId'),
       cart: [],
       id: "",
     }
@@ -82,14 +82,13 @@ class Cart extends Component {
     })
   }
 
-
   render(props) {
     return (
       <div>
         <Nav length={this.state.cart_length} />
         <div className="product-container">
           <ProductsList products={this.state.cart} DeleteFromCart={this.DeleteFromCart} addToCart={this.addToCart} />
-
+          <button> Continue to checkout </button>
         </div>
       </div>
     )
