@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using E_commerce.Models;
 using System.Data.SQLite;
 using Dapper;
@@ -33,5 +31,12 @@ namespace E_commerce.Repositories
             }
         }
 
+        public void Add(Order_Customer order_Customer)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(this.connectionString))
+            {
+                connection.Execute("INSERT INTO Order_Customer (name_customer, adress_customer, ordered_cart) VALUES(@name_customer, @adress_customer, @ordered_cart)", order_Customer);
+            }
+        }
     }
 }

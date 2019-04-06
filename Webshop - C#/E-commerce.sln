@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-commerce", "E-commerce\E-commerce.csproj", "{B9AF762B-0B7C-49FB-99E6-A5BB0B29F5E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E-commerce", "E-commerce\E-commerce.csproj", "{B9AF762B-0B7C-49FB-99E6-A5BB0B29F5E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E-commerce.IntegrationTests", "E-commerce.IntegrationTests\E-commerce.IntegrationTests.csproj", "{DF8DC7C4-5465-4623-841D-9A7F8A8F37CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B9AF762B-0B7C-49FB-99E6-A5BB0B29F5E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9AF762B-0B7C-49FB-99E6-A5BB0B29F5E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9AF762B-0B7C-49FB-99E6-A5BB0B29F5E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF8DC7C4-5465-4623-841D-9A7F8A8F37CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF8DC7C4-5465-4623-841D-9A7F8A8F37CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF8DC7C4-5465-4623-841D-9A7F8A8F37CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF8DC7C4-5465-4623-841D-9A7F8A8F37CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

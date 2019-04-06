@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using E_commerce.Models;
@@ -30,6 +26,5 @@ namespace E_commerce.Controllers
         {
             return Ok(this.orderServices.Get(guid));
         }
-        
     }
 }

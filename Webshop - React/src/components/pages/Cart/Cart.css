@@ -1,5 +1,30 @@
 .product-container {
-  background-color: #A09A9A;
+  background-color: rgba(0,0,0,.9);
   padding-top: 130px;
   padding-bottom: 100px;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.checkout-button {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 2px;
+  margin: 20px;
+}
+
+.checkout-button:hover {
+  border-bottom: 1px solid white;
+}
+
+.total-sum {
+  color: white;
+  font-size: 20px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  text-align: right;
+  width: 1196px;
 }

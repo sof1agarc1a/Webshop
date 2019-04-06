@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using E_commerce.Models;
+﻿using E_commerce.Models;
 using E_commerce.Repositories;
 
 namespace E_commerce.Services
@@ -27,7 +23,6 @@ namespace E_commerce.Services
             {
                 order_customer = order_customer,
                 cart = cart
-
             };
         }
     }

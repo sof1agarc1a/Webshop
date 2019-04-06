@@ -1,0 +1,15 @@
+.order-info-container {
+  font-size: 20px;
+  padding: 20px 0 0;
+  text-align: left;
+  width: 1200px;
+  margin: auto;
+}
+
+.order-info-container p {
+  width: 100%;
+  font-family: sans-serif;
+  margin: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  padding: 8px 0;
+}

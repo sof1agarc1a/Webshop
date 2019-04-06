@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +36,20 @@ namespace E_commerce.Controllers
         {
             var result = this.order_CustomerService.Get(guid);
             return Ok(result);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Post([FromBody]Order_Customer order_Customer)
+        {
+            var result = this.order_CustomerService.Add(order_Customer);
+
+            if (!result)
+            {
+                return BadRequest();
+            }
+            return Ok();
         }
     }
 }

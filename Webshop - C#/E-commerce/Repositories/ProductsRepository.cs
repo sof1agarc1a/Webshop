@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using E_commerce.Models;
 using System.Data.SQLite;
 using Dapper;
@@ -35,6 +33,5 @@ namespace E_commerce.Repositories
                 return connection.Query<Products>("SELECT * FROM Products WHERE id = @key", new { key }).ToList();
             }
         }
-
     }
 }

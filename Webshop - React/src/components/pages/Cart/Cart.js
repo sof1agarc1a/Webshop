@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components'
+import { NavLink } from "react-router-dom";
 import ProductsList from "../../ProductsList";
 import Nav from "../../Nav"
 import './Cart.css' ;
@@ -15,7 +15,6 @@ class Cart extends Component {
     }
     this.DeleteFromCart = this.DeleteFromCart.bind(this)
     this.addToCart = this.addToCart.bind(this)
-
   }
 
   componentDidMount(){
@@ -32,10 +31,9 @@ class Cart extends Component {
     })
     .then(cartResponse => cartResponse.json())
     .then(cartResponse => {
-      console.log(cartResponse)
       this.setState({
         cart: cartResponse.length > 0 ? cartResponse : [],
-        cart_length: cartResponse.length
+        cart_length: cartResponse.length,
       })
     })
   }
@@ -83,17 +81,23 @@ class Cart extends Component {
   }
 
   render(props) {
+    let sum = 0;
     return (
       <div>
         <Nav length={this.state.cart_length} />
         <div className="product-container">
-          <ProductsList products={this.state.cart} DeleteFromCart={this.DeleteFromCart} addToCart={this.addToCart} />
-          <button> Continue to checkout </button>
+          <NavLink className="checkout-button" to="/Checkout"> Continue to checkout </NavLink>
+          {this.state.cart.map(item => {
+            {sum += item.total_price}
+            return
+            console.log(sum)
+          })}
+          <pre className="total-sum"> Total  {sum} kr</pre>
+          <ProductsList products={this.state.cart} DeleteFromCart={this.DeleteFromCart} addToCart={this.addToCart} Artist={true} ProductTitle={true} invisiblePrice={true} wrappercss={true} productcss={true} invisibleDescription={true} />
         </div>
       </div>
     )
   }
 }
-
 
 export default Cart;

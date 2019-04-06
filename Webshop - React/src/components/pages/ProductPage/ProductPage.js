@@ -1,37 +1,25 @@
 import React, { Component } from 'react';
 import ProductsList from "../../ProductsList";
 import Nav from "../../Nav"
-import './Home.css' ;
+import './ProductPage.css' ;
 
-class Home extends Component {
+
+class ProductPage extends Component {
+
   constructor() {
     super()
     this.state = {
       products: [],
       cart_length: "",
-      isLoading: true,
-      cartId: ""
+      cartId: localStorage.getItem('cartId'),
+      product_link_id: window.location.href.split('=')[1]
     }
     this.addToCart = this.addToCart.bind(this)
   }
 
-  componentWillMount() {
-    localStorage.getItem('cartId') && this.setState({
-      cartId: localStorage.getItem('cartId'),
-      isLoading: false
-    })
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    localStorage.setItem('cartId', nextState.cartId)
-  }
-
   componentDidMount() {
-    if(!localStorage.getItem('cartId')) {
-      this.fetchGuid()
-    }
     this.fetchProduct()
-    setTimeout(() => this.updateCart(), 400) //fetch unique cart after getting a guid to avoid errors
+    this.updateCart()
   }
 
   //get guid
@@ -47,7 +35,7 @@ class Home extends Component {
 
   // fetch all products
   fetchProduct = () => {
-    fetch(`/api/products`)
+    fetch(`/api/products/${this.state.product_link_id}`)
       .then(response => response.json())
       .then(response => {
       this.setState({
@@ -67,6 +55,7 @@ class Home extends Component {
     })
     .then(response => response.status !== 404 && response.json())
     .then(response => {
+      console.log(response)
       this.setState({
         cart_length: response.length
       })
@@ -75,7 +64,6 @@ class Home extends Component {
 
   addToCart(event, product) {
     event.preventDefault();
-
     const data = {
       cart_id : this.state.cartId,
       product_id : product.id
@@ -98,12 +86,12 @@ class Home extends Component {
     return (
       <div>
         <Nav length={this.state.cart_length} />
-        <div className="product-container-home">
-          <ProductsList products={this.state.products} addToCart={this.addToCart} invisibleItemTotPrice={true} invisibleButtonDelete={true} invisibleQuantity={true} invisibleDescription={true}/>
+        <div className="product-container-productpage">
+          <ProductsList products={this.state.products} addToCart={this.addToCart} invisibleItemTotPrice={true} invisibleButtonDelete={true} invisibleQuantity={true}/>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Home;
+export default ProductPage;

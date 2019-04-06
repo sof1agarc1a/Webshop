@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using E_commerce.Models;
 using E_commerce.Repositories;
-using System.Transactions;
 
 namespace E_commerce.Services
 {

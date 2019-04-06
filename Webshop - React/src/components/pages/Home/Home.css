@@ -1,5 +1,6 @@
 .product-container-home {
   background-color: #A09A9A;
-  padding-top: 130px;
+  padding-top: 150px;
   padding-bottom: 100px;
+  min-height: 100vh;
 }

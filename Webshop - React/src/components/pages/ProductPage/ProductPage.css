@@ -1,0 +1,15 @@
+.product-container-productpage {
+  background-color: #524E4E;
+  padding-top: 150px;
+  min-height: 100vh;
+  text-align: center;
+
+}
+
+.product-container-productpage p:nth-child(3) {
+  font-size: 18px;
+  padding: 5px;
+  line-height: 1.4;
+  margin: 10px 460px;
+  text-align: left;
+}

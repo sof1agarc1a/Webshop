@@ -11,7 +11,6 @@ const Nav = (props) => (
       <li> <NavLink to="/"> Coming soon </NavLink> </li>
       <li> <NavLink to="/"> Toplist </NavLink> </li>
     </ul>
-
     <div className="cart-wrapper">
       <NavLink to="/Cart"> <p> {props.length} </p> </NavLink>
       <NavLink to="/Cart"> <img className="cart-icon" src={'https://static.thenounproject.com/png/22665-200.png'} alt="icon" /> </NavLink>

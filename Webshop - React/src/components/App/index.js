@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 import './App.css';
-
-
 import Home from "../pages/Home/Home"
-// import '../pages/Home/Home.css' ;
-
+import ProductPage from "../pages/ProductPage/ProductPage"
 import Cart from "../pages/Cart/Cart"
-import Shop from "../pages/Shop/Shop"
+import Checkout from "../pages/Checkout/Checkout"
+import OrderView from "../pages/OrderView/OrderView"
 import Error from "../pages/Error/Error.js"
 
 class App extends Component {
-
   render() {
     return (
       <BrowserRouter>
-      <div>
+        <div>
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/Cart" component={Cart} />
-            <Route path="/Shop" component={Shop} />
+            <Route path="/Checkout" component={Checkout} />
+            <Route path="/OrderView" component={OrderView} />
+            <Route path="/ProductPage" component={ProductPage} />
             <Route component={Error} />
           </Switch>
         </div>
